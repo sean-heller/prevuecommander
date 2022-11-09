@@ -6,10 +6,10 @@ public class ClockCommand : BaseCommand
 
     public ClockCommand(DateTime dateTime) : base('K')
     {
-        // Convert the datetime from eastern to central
-        // _dateTime = dateTime.AddHours(-1);
+      
+        dateTime = dateTime.AddHours(-1);
 
-        var cstZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
+        var cstZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
         _dateTime = TimeZoneInfo.ConvertTimeFromUtc(dateTime.ToUniversalTime(), cstZone);
     }
 

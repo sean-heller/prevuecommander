@@ -1,12 +1,18 @@
 namespace Prevue.Core;
+using System.Globalization;
 
 public static class Helpers
 {
     public static byte GetJulianDate(DateTime dateTime)
     {
         // Do more testing on this with dates past 255 days
-        var p = dateTime.DayOfYear;
-        return (byte)((p >= 256) ? (p - 255) : p);
+        // var p = dateTime.DayOfYear;
+        //return (byte)((p >= 256) ? (p - 255) : p);
+
+        JulianCalendar julianCalendar = new JulianCalendar();
+        int dayOfYear = julianCalendar.GetDayOfYear(dateTime);
+        return (byte)dayOfYear;
+
     }
 
     public static byte[] GuideFontTokenMapper(string token)
