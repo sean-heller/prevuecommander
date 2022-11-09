@@ -6,14 +6,11 @@ public static class Helpers
     public static byte GetJulianDate(DateTime dateTime)
     {
         // Do more testing on this with dates past 255 days
-        // var p = dateTime.DayOfYear;
-        //return (byte)((p >= 256) ? (p - 255) : p);
-
-        JulianCalendar julianCalendar = new JulianCalendar();
-        int dayOfYear = julianCalendar.GetDayOfYear(dateTime);
-        return (byte)dayOfYear;
-
+        var p = dateTime.DayOfYear;
+        return (byte)((p >= 256) ? (p - 256) : p);
     }
+
+    public static double ToJulianDate(this DateTime date) { return date.ToOADate() + 2415018.5; }
 
     public static byte[] GuideFontTokenMapper(string token)
     {
